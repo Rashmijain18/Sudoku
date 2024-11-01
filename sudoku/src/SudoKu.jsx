@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../src/Sudoku.css'
 
 const initialBoard = [
   [5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -70,14 +71,14 @@ const Sudoku = () => {
   };
 
   return (
-    <>
+    <div className="board">
       {board.map((row, rowIndex) => {
         return (
-          <>
+          <div className="row">
             {row.map((col, colIndex) => {
               return (
-                <>
                   <input
+                    className="cell"
                     key={rowIndex + colIndex}
                     value={col === 0 ? "" : col}
                     onChange={(e) => {
@@ -85,14 +86,14 @@ const Sudoku = () => {
                     }}
                     disabled={isDisabled(rowIndex, colIndex)}
                   />
-                </>
               );
             })}
-          </>
+          </div>
         );
-      })}
-    </>
+      })
+      }
+    </div>
   );
-};
+}
 
 export default Sudoku;

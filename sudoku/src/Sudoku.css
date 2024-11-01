@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.board {
+  display: inline-block;
+  border: 2px solid #333;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #999;
+  font-size: 20px;
+  text-align: center;
+}
+
+.cell:nth-child(3n) {
+  border-right: 2px solid #333;
+}
+
+.row:nth-child(3n) .cell {
+  border-bottom: 2px solid #333;
+}
+
+.initial {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
