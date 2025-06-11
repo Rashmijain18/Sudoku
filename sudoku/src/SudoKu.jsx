@@ -71,12 +71,14 @@ const Sudoku = () => {
   };
 
   return (
-    <div className="board">
-      {board.map((row, rowIndex) => {
-        return (
-          <div className="row">
-            {row.map((col, colIndex) => {
-              return (
+    <div className="App">
+      <h1 className="game-title">Sudoku</h1>
+      <div className="board">
+        {board.map((row, rowIndex) => {
+          return (
+            <div className="row" key={rowIndex}>
+              {row.map((col, colIndex) => {
+                return (
                   <input
                     className="cell"
                     key={rowIndex + colIndex}
@@ -85,13 +87,17 @@ const Sudoku = () => {
                       handleCellChange(rowIndex, colIndex, e.target.value);
                     }}
                     disabled={isDisabled(rowIndex, colIndex)}
+                    maxLength={1}
+                    type="number"
+                    min="1"
+                    max="9"
                   />
-              );
-            })}
-          </div>
-        );
-      })
-      }
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

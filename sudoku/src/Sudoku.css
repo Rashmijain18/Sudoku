@@ -1,11 +1,40 @@
 .App {
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96C93D);
+  background-size: 400% 400%;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+
+.game-title {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 2px;
 }
 
 .board {
   display: inline-block;
-  border: 2px solid #333;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .row {
@@ -13,26 +42,45 @@
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
-  border: 1px solid #999;
-  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(189, 195, 199, 0.5);
+  font-size: 1.5rem;
   text-align: center;
+  font-weight: 600;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.cell:hover:not(:disabled) {
+  background-color: rgba(52, 152, 219, 0.1);
+  border-color: #3498db;
+  transform: scale(1.05);
+}
+
+.cell:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+  background: white;
+}
+
+.cell:disabled {
+  background-color: rgba(236, 240, 241, 0.8);
+  color: #34495e;
+  cursor: not-allowed;
 }
 
 .cell:nth-child(3n) {
-  border-right: 2px solid #333;
+  border-right: 2px solid rgba(44, 62, 80, 0.8);
 }
 
 .row:nth-child(3n) .cell {
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid rgba(44, 62, 80, 0.8);
 }
 
-.initial {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
+/* Remove number input spinners */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -41,4 +89,29 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+/* Add responsive design */
+@media (max-width: 600px) {
+  .cell {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .game-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .cell {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .game-title {
+    font-size: 2rem;
+  }
 }
